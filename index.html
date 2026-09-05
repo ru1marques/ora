@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eeefea" />
+  <title>ORA — Header</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="hero" id="hero" aria-label="ORA header">
+    <div class="hero__frame" aria-hidden="true">
+      <div class="hero__image hero__image--blurred"></div>
+      <div class="hero__image hero__image--sharp"></div>
+      <div class="hero__wash"></div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="ORA home">
+        <img src="assets/logo.svg" alt="ORA" />
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#studio">Studio</a>
+        <a class="nav__contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <section class="hero-copy" aria-label="Intro text">
+      <h1>The future is uncertain.<br />Are you moving forward nevertheless?</h1>
+      <a href="#about" class="curious">Curious?</a>
+    </section>
+
+    <div class="hotspots" aria-label="Interactive image points">
+      <button class="hotspot" style="--x:31.5%;--y:10.5%" data-x="31.5" data-y="10.5" aria-label="Focus point 1"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:82.3%;--y:21.5%" data-x="82.3" data-y="21.5" aria-label="Focus point 2"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:61.8%;--y:24.3%" data-x="61.8" data-y="24.3" aria-label="Focus point 3"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:78.2%;--y:25.1%" data-x="78.2" data-y="25.1" aria-label="Focus point 4"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:13.4%;--y:35.7%" data-x="13.4" data-y="35.7" aria-label="Focus point 5"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:53.4%;--y:57.8%" data-x="53.4" data-y="57.8" aria-label="Focus point 6"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:80.1%;--y:58.7%" data-x="80.1" data-y="58.7" aria-label="Focus point 7"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:20.8%;--y:77.6%" data-x="20.8" data-y="77.6" aria-label="Focus point 8"><span class="hotspot__dot"></span></button>
+      <button class="hotspot hotspot--muted" style="--x:10.9%;--y:83.1%" data-x="10.9" data-y="83.1" aria-label="Focus point 9"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:90.0%;--y:77.6%" data-x="90.0" data-y="77.6" aria-label="Focus point 10"><span class="hotspot__dot"></span></button>
+    </div>
+
+    <div class="side-index" aria-hidden="true">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i class="is-current"></i>
+      <i></i>
+      <i></i>
+    </div>
+
+    <p class="credit">Photography from Toby Coulson</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
