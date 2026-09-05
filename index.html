@@ -3,29 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#eeefea" />
-  <title>ORA — Header</title>
+  <meta name="theme-color" content="#ffffff" />
+  <title>ORA</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="hero" id="hero" aria-label="ORA header">
-    <div class="hero__frame" aria-hidden="true">
-      <div class="hero__image hero__image--blurred"></div>
-      <div class="hero__image hero__image--sharp"></div>
-      <div class="hero__wash"></div>
-    </div>
-
     <header class="site-header">
-      <a class="brand" href="#" aria-label="ORA home">
+      <a class="brand" href="#hero" aria-label="ORA home">
         <img src="assets/logo.svg" alt="ORA" />
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
         <a href="#about">About</a>
-        <a href="#studio">Studio</a>
+        <a href="#studio-experiments">Studio</a>
         <a class="nav__contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
+  <main>
+  <section class="hero" id="hero" aria-label="ORA header">
+    <div class="hero__frame" aria-hidden="true">
+      <div class="hero__image hero__image--blurred"></div>
+      <div class="hero__image hero__image--sharp"></div>
+    </div>
+
+
 
     <section class="hero-copy" aria-label="Intro text">
       <h1>The future is uncertain.<br />Are you moving forward nevertheless?</h1>
@@ -41,23 +42,189 @@
       <button class="hotspot" style="--x:53.4%;--y:57.8%" data-x="53.4" data-y="57.8" aria-label="Focus point 6"><span class="hotspot__dot"></span></button>
       <button class="hotspot" style="--x:80.1%;--y:58.7%" data-x="80.1" data-y="58.7" aria-label="Focus point 7"><span class="hotspot__dot"></span></button>
       <button class="hotspot" style="--x:20.8%;--y:77.6%" data-x="20.8" data-y="77.6" aria-label="Focus point 8"><span class="hotspot__dot"></span></button>
-      <button class="hotspot hotspot--muted" style="--x:10.9%;--y:83.1%" data-x="10.9" data-y="83.1" aria-label="Focus point 9"><span class="hotspot__dot"></span></button>
+      <button class="hotspot" style="--x:10.9%;--y:83.1%" data-x="10.9" data-y="83.1" aria-label="Focus point 9"><span class="hotspot__dot"></span></button>
       <button class="hotspot" style="--x:90.0%;--y:77.6%" data-x="90.0" data-y="77.6" aria-label="Focus point 10"><span class="hotspot__dot"></span></button>
-    </div>
-
-    <div class="side-index" aria-hidden="true">
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-      <i class="is-current"></i>
-      <i></i>
-      <i></i>
+      <button class="hotspot" style="--x:50%;--y:43%" data-x="50" data-y="43" aria-label="Focus point 11"><span class="hotspot__dot"></span></button>
     </div>
 
     <p class="credit">Photography from Toby Coulson</p>
+  </section>
+
+  <section class="about" id="about" aria-label="Does this sound familiar?">
+    <p class="about__intro"><span>Does this sound familiar?</span> You notice that something is changing: in your organization, in your industry, in the world around you. You have ideas, maybe even analyses about the changes needed. But somewhere between knowing and acting, things get stuck.</p>
+
+    <div class="about__columns">
+      <article class="about__column">
+        <h2>Where are we going?</h2>
+        <p>The shared<br class="desktop-break" /> direction is unclear.</p>
+      </article>
+      <article class="about__column">
+        <h2>What does this mean in practice?</h2>
+        <p>The strategy exists, but no one knows what it means for day-to-day operations.</p>
+      </article>
+      <article class="about__column">
+        <h2>How do we move forward?</h2>
+        <p>New approaches are needed, but the team lacks openness and imagination. The feeling of being stuck grows louder amid the daily crises.<br /> A risky situation, because it needs movement and courage for an organisation to sustain long-term. <span class="about__accent">That’s exactly where <span class="about__wordmark">ORA</span> comes in.</span></p>
+      </article>
+    </div>
+  </section>
+  <section class="studio" id="studio" aria-labelledby="studio-title">
+    <span class="studio__dot studio__dot--orange" aria-hidden="true"></span>
+    <div class="studio__intro">
+      <h2 id="studio-title"><span>Courageously</span> changing course.</h2>
+      <p><span class="about__wordmark">ORA</span> is a consulting firm dedicated to organisational courage &amp; optimism for the future. We work with owner-managed companies, SMEs, and leadership teams that need to adapt to a changing environment. Instead of ready-made answers and trend reports, we bring extensive methodological expertise, entrepreneurial acumen, and sharp foresight. After all, the future isn’t a fixed plan, but a constant act of balance. Forward-thinking organisations remain attentive, regularly reviewing their priorities and adjusting their course as necessary.</p>
+    </div>
+    <p class="studio__support">We support you in this process: we bring together the knowledge and experience already present in your organisation and create clear direction and define future directed steps.</p>
+    <span class="studio__dot studio__dot--dark" aria-hidden="true"></span>
+  </section>
+
+  <section class="narrative" id="narrative" aria-labelledby="narrative-title">
+    <div class="narrative__direction" aria-hidden="true">
+      <span class="narrative__direction-dot"></span>
+      <span class="narrative__direction-verb">see</span>
+      <span>future options</span>
+    </div>
+
+    <div class="narrative__content">
+      <img class="narrative__visual" src="assets/narrative/image%2095.jpg" alt="Close-up of an eye looking through darkness" />
+      <div class="narrative__copy">
+        <h2 id="narrative-title">Forward-thinking that provides direction</h2>
+        <p>We scan your environment for subtle signals, noticeable trends, and fundamental drivers. This creates an overview of what’s coming and where it’s coming from. Methodologically, we rely on strategic foresight, futures literacy, and innovation research. But we don’t stop at simply understanding change.</p>
+      </div>
+    </div>
+
+    <span class="narrative__dot narrative__dot--one" aria-hidden="true"></span>
+    <span class="narrative__dot narrative__dot--two" aria-hidden="true"></span>
+    <span class="narrative__dot narrative__dot--three" aria-hidden="true"></span>
+  </section>
+
+  <section class="projects" id="projects" aria-label="Selected projects">
+    <article class="project" id="project-futures" style="--project-order: 1">
+      <div class="project__media slider" tabindex="0" aria-label="Futures Thinking image gallery">
+        <div class="slider__slides">
+          <img class="slider__slide is-current" src="assets/projects/Frame%20388.jpg" alt="Futures Thinking workshop" style="--slide-scale: 1.1" />
+          <img class="slider__slide" src="assets/projects/Frame%20388.jpg" alt="Participants during the Futures Thinking workshop" style="--image-position: 42% center; --slide-scale: 1.2" />
+          <img class="slider__slide" src="assets/projects/Frame%20388.jpg" alt="Workshop activity in detail" style="--image-position: 70% center; --slide-scale: 1.3" />
+        </div>
+        <h2 class="project__title">Futures Thinking<br />— Workshop</h2>
+        <div class="slider__dots" aria-label="Choose image">
+          <button class="is-current" type="button" aria-label="Image 1" aria-pressed="true"></button>
+          <button type="button" aria-label="Image 2" aria-pressed="false"></button>
+          <button type="button" aria-label="Image 3" aria-pressed="false"></button>
+        </div>
+      </div>
+      <div class="project__details">
+        <div class="project__meta"><p>With <span class="project__client">Novo Nordisk Foundation CORC</span></p><p>Nov 2026, DK</p></div>
+        <p class="project__scope">140 participants<br />1.5-hour workshop as part of a conference</p>
+        <div class="project__description"><p>Little text about<br />the experience</p><p>The project integrates data intelligence, risk management, and digital transformation approaches, ensuring the organisation maintains its leadership in the sector while effectively contributing to the promotion of health on a global scale.</p></div>
+      </div>
+    </article>
+
+    <article class="project" id="project-north-sea" style="--project-order: 2">
+      <div class="project__media slider" tabindex="0" aria-label="North Sea Futures image gallery">
+        <div class="slider__slides">
+          <img class="slider__slide is-current" src="assets/projects/Frame%20421.jpg" alt="North Sea Futures workshop" style="--slide-scale: 1.1" />
+          <img class="slider__slide" src="assets/projects/Frame%20421.jpg" alt="North Sea Futures working session" style="--image-position: 65% center; --slide-scale: 1.2" />
+          <img class="slider__slide" src="assets/projects/Frame%20421.jpg" alt="Research process in detail" style="--image-position: 35% center; --slide-scale: 1.3" />
+        </div>
+        <h2 class="project__title">North Sea Futures<br />— Workshop</h2>
+        <div class="slider__dots" aria-label="Choose image">
+          <button class="is-current" type="button" aria-label="Image 1" aria-pressed="true"></button>
+          <button type="button" aria-label="Image 2" aria-pressed="false"></button>
+          <button type="button" aria-label="Image 3" aria-pressed="false"></button>
+        </div>
+      </div>
+      <div class="project__details">
+        <div class="project__meta"><p>With <span class="project__client">Infiverde</span></p><p>Oct 2025, Scotland</p></div>
+        <p class="project__scope">Core group of the research mission<br />2-day on-site process</p>
+        <div class="project__description"><p>Little text about<br />the experience</p><p>The project integrates data intelligence, risk management, and digital transformation approaches, ensuring the organisation maintains its leadership in the sector while effectively contributing to its long-term transformation.</p></div>
+      </div>
+    </article>
+
+    <article class="project" id="project-mannheim" style="--project-order: 3">
+      <div class="project__media slider" tabindex="0" aria-label="Zukünfte Mannheim image gallery">
+        <div class="slider__slides">
+          <img class="slider__slide is-current" src="assets/projects/Frame%20422.jpg" alt="Zukünfte Mannheim workshop" style="--slide-scale: 1.1" />
+          <img class="slider__slide" src="assets/projects/Frame%20422.jpg" alt="Mannheim workshop participants" style="--image-position: 65% center; --slide-scale: 1.2" />
+          <img class="slider__slide" src="assets/projects/Frame%20422.jpg" alt="Workshop ideas in development" style="--image-position: 35% center; --slide-scale: 1.3" />
+        </div>
+        <h2 class="project__title">Zukünfte Mannheim<br />— Workshop</h2>
+        <div class="slider__dots" aria-label="Choose image">
+          <button class="is-current" type="button" aria-label="Image 1" aria-pressed="true"></button>
+          <button type="button" aria-label="Image 2" aria-pressed="false"></button>
+          <button type="button" aria-label="Image 3" aria-pressed="false"></button>
+        </div>
+      </div>
+      <div class="project__details">
+        <div class="project__meta"><p>With <span class="project__client">TransferMA</span></p><p>2024, Germany</p></div>
+        <p class="project__scope">80 city representatives<br />5-hour on-site workshop</p>
+        <div class="project__description"><p>Little text about<br />the experience</p><p>The project integrates data intelligence, risk management, and digital transformation approaches, helping participants turn emerging signals into shared priorities and practical next steps.</p></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="notable-projects" id="notable-projects" aria-labelledby="notable-projects-title">
+    <div class="notable-projects__content">
+      <h2 id="notable-projects-title">Other notable Projects</h2>
+      <div class="notable-projects__list">
+        <div class="notable-projects__names">
+          <p>FUTURES LITERACY WORKSHOP</p>
+          <p>KEYNOTE</p>
+          <p>MULTISTAKEHOLDER WORKSHOP</p>
+          <p>PROJECT</p>
+          <p>PROJECT</p>
+          <p>PROJECT</p>
+          <p>PROJECT</p>
+        </div>
+        <div class="notable-projects__places">
+          <p>EU EIT Mobility &amp; Climate KICs</p>
+          <p>Future Festival, City of Zurich</p>
+          <p>University of Brandenburg</p>
+          <p>Place or Event</p>
+          <p>Place or Event</p>
+          <p>Place or Event</p>
+          <p>Place or Event</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio-experiments" id="studio-experiments" aria-label="ORA studio">
+    <p class="studio-experiments__copy"><a href="#studio-experiments">ORA studio</a> is our experimental arm. Here, the future comes to life through installations, experiential formats, and artistic collaborations. They aim to provoke, move, and make possible futures something that we not only intellectually think about, but rather something that almost feels real. We have created formats in public spaces, for conferences and cultural institutions such as Berlin Science Week, Dutch Design Foundation, and Dubai Futures Forum.</p>
+  </section>
   </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__top">
+      <p class="site-footer__tagline">Think ahead. Act grounded.</p>
+
+      <div class="site-footer__column">
+        <p>ORA operates across the European<br />continent and collaborates with a<br />global network of future-makers.</p>
+        <p>© 2026 ORA Advisory GmbH</p>
+      </div>
+
+      <div class="site-footer__column">
+        <p>Contact:<br /><a href="mailto:hello@weareora.org">hello@weareora.org</a><br /><span class="site-footer__link">Linkedin</span><br /><span class="site-footer__link">Instagram</span></p>
+        <p>Zurich, Switzerland / Europe</p>
+      </div>
+    </div>
+
+    <div class="site-footer__mark" aria-hidden="true">
+      <img src="assets/logo.svg" alt="" />
+      <span></span>
+    </div>
+  </footer>
+
+  <nav class="side-index" aria-label="Section navigation">
+    <a href="#hero" class="is-current" aria-label="Introduction" aria-current="location"></a>
+    <a href="#about" aria-label="Does this sound familiar?"></a>
+    <a href="#studio" aria-label="Courageously changing course"></a>
+    <a href="#narrative" aria-label="See future options"></a>
+    <a href="#projects" aria-label="Selected projects"></a>
+    <a href="#notable-projects" aria-label="Other notable projects"></a>
+    <a href="#studio-experiments" aria-label="ORA studio"></a>
+    <a href="#contact" aria-label="Contact"></a>
+  </nav>
 
   <script src="script.js"></script>
 </body>
