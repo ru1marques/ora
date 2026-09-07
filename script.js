@@ -43,6 +43,9 @@ points.forEach((point) => {
 hero.addEventListener('pointerleave', () => clearFocus(activePoint));
 
 const canAttractPoints = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
+const magneticPoints = Array.from(document.querySelectorAll(
+  '.hotspot, .studio__dot, .narrative__direction-dot, .narrative__dot, .narrative__copy-dot, .site-footer__mark span, .side-index a, .slider__dots button'
+));
 let attractionFrame = null;
 let pointerPosition = null;
 
@@ -50,13 +53,16 @@ function updatePointAttraction() {
   attractionFrame = null;
   if (!pointerPosition) return;
 
-  const heroBounds = hero.getBoundingClientRect();
-  const attractionRadius = 150;
-  const maximumPull = 6;
-
-  points.forEach((point) => {
-    const pointX = heroBounds.left + heroBounds.width * Number(point.dataset.x) / 100;
-    const pointY = heroBounds.top + heroBounds.height * Number(point.dataset.y) / 100;
+  magneticPoints.forEach((point) => {
+    const isNarrativePoint = point.matches(
+      '.narrative__direction-dot, .narrative__dot, .narrative__copy-dot'
+    );
+    const attractionRadius = isNarrativePoint ? 230 : 150;
+    const maximumPull = point.classList.contains('hotspot') ? 6 : (isNarrativePoint ? 21 : 12);
+    const bounds = point.getBoundingClientRect();
+    const translation = getComputedStyle(point).translate.split(' ');
+    const pointX = bounds.left + bounds.width / 2 - (parseFloat(translation[0]) || 0);
+    const pointY = bounds.top + bounds.height / 2 - (parseFloat(translation[1]) || 0);
     const deltaX = pointerPosition.x - pointX;
     const deltaY = pointerPosition.y - pointY;
     const distance = Math.hypot(deltaX, deltaY);
@@ -67,7 +73,7 @@ function updatePointAttraction() {
       return;
     }
 
-    const strength = Math.pow(1 - distance / attractionRadius, 2);
+    const strength = Math.pow(1 - distance / attractionRadius, isNarrativePoint ? 1.15 : 2);
     const pull = Math.min(distance, maximumPull * strength);
     point.style.setProperty('--pull-x', `${deltaX / distance * pull}px`);
     point.style.setProperty('--pull-y', `${deltaY / distance * pull}px`);
@@ -75,20 +81,23 @@ function updatePointAttraction() {
 }
 
 if (canAttractPoints.matches) {
-  hero.addEventListener('pointermove', (event) => {
+  document.addEventListener('pointermove', (event) => {
     pointerPosition = { x: event.clientX, y: event.clientY };
     if (attractionFrame === null) {
       attractionFrame = window.requestAnimationFrame(updatePointAttraction);
     }
   }, { passive: true });
 
-  hero.addEventListener('pointerleave', () => {
+  const resetAttraction = () => {
     pointerPosition = null;
-    points.forEach((point) => {
+    magneticPoints.forEach((point) => {
       point.style.setProperty('--pull-x', '0px');
       point.style.setProperty('--pull-y', '0px');
     });
-  });
+  };
+  document.documentElement.addEventListener('pointerleave', resetAttraction);
+  window.addEventListener('blur', resetAttraction);
+  window.addEventListener('scroll', resetAttraction, { passive: true });
 }
 
 const sectionNavigation = document.querySelector('.side-index');
@@ -102,16 +111,16 @@ function updateSectionNavigation() {
   const currentSection = sections.find((section) => {
     const bounds = section.getBoundingClientRect();
     return bounds.top <= midpoint && bounds.bottom > midpoint;
-  }) || sections[0];
+  }) || null;
 
-  sectionNavigation.classList.toggle('is-on-light', currentSection.id !== 'hero');
-  sectionNavigation.classList.toggle('is-on-dark', currentSection.id === 'contact');
+  sectionNavigation.classList.toggle('is-on-light', currentSection?.id !== 'hero');
+  sectionNavigation.classList.toggle('is-on-dark', currentSection?.id === 'contact');
   siteHeader.classList.toggle(
     'is-difference',
     hero.getBoundingClientRect().bottom <= siteHeader.getBoundingClientRect().bottom
   );
   sectionLinks.forEach((link) => {
-    const isCurrent = link.hash === `#${currentSection.id}`;
+    const isCurrent = currentSection && link.hash === `#${currentSection.id}`;
     link.classList.toggle('is-current', isCurrent);
     if (isCurrent) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
@@ -226,7 +235,7 @@ sliders.forEach((slider) => {
 });
 
 const revealItems = Array.from(document.querySelectorAll(
-  '.about__intro, .about__columns, .studio__intro, .studio__support, .narrative__direction, .narrative__visual, .narrative__copy, .narrative__dot, .notable-projects__content, .studio-experiments__copy, .site-footer__top'
+  '.about__intro, .about__columns, .studio__intro, .studio__support, .narrative__direction, .narrative__visual, .narrative__copy, .narrative__summary, .narrative__dot, .offer__label, .offer__card, .offer__contact, .projects__label, .projects__intro-copy, .notable-projects__content, .studio-experiments__copy, .site-footer__top'
 ));
 
 if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
@@ -249,4 +258,37 @@ if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
     });
   }, { threshold: .22 });
   projectCards.forEach((card) => projectObserver.observe(card));
+}
+
+const perspectiveSection = document.querySelector('.perspective');
+const perspectiveText = document.querySelector('.perspective__text');
+let perspectiveFrame = null;
+
+function updatePerspectiveClarity() {
+  const bounds = perspectiveSection.getBoundingClientRect();
+  const travel = Math.max(1, bounds.height - window.innerHeight);
+  const progress = Math.max(0, Math.min(1, -bounds.top / travel));
+  const easedProgress = progress * progress * (3 - 2 * progress);
+
+  perspectiveText.style.setProperty('--perspective-blur', `${(18 * (1 - easedProgress)).toFixed(2)}px`);
+  perspectiveText.style.setProperty('--perspective-opacity', (.42 + .58 * easedProgress).toFixed(3));
+  perspectiveText.style.setProperty('--perspective-scale', (.985 + .015 * easedProgress).toFixed(4));
+  perspectiveFrame = null;
+}
+
+function requestPerspectiveUpdate() {
+  if (perspectiveFrame !== null) return;
+  perspectiveFrame = window.requestAnimationFrame(updatePerspectiveClarity);
+}
+
+if (perspectiveSection && perspectiveText) {
+  if (prefersReducedMotion.matches) {
+    perspectiveText.style.setProperty('--perspective-blur', '0px');
+    perspectiveText.style.setProperty('--perspective-opacity', '1');
+    perspectiveText.style.setProperty('--perspective-scale', '1');
+  } else {
+    window.addEventListener('scroll', requestPerspectiveUpdate, { passive: true });
+    window.addEventListener('resize', requestPerspectiveUpdate);
+    requestPerspectiveUpdate();
+  }
 }
